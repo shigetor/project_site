@@ -1,0 +1,18 @@
+# config/packages/sonata_user.yaml
+
+sonata_user:
+    security_acl: true
+    manager_type: orm
+    mailer: fos_user.mailer.noop
+    class:
+        user: App\Entity\SonataUserUser
+        group: App\Entity\SonataUserGroup
+    google_authenticator:
+            enabled: true
+            server:  shop_beta.my
+            trusted_ip_list:
+                - 127.0.0.1
+            forced_for_role:
+                - ROLE_ADMIN
+    impersonating:
+            route: sonata_admin_dashboard

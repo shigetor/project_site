@@ -1,0 +1,76 @@
+
+<!DOCTYPE HTML>
+
+<html lang="ru">
+<head>
+    <title>{% block title %}BETA shop  authorization{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    {% block stylesheets %}
+        <link href="{{ asset("assets/css/main.css") }}" rel="stylesheet"/>
+    {% endblock %}
+</head>
+
+<body class="is-preload">
+
+{% include'layout/header.html.twig' %}
+
+
+{% block body %}
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if not app.user %}
+            <div class="mb-2">
+                Если у вас нет учетной записи записи то <a class="nav-link" href="{{ path('registration') }}">Register</a>
+            </div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputUsername">Username</label>
+        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+        <label for="inputPassword">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+        {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+        #}
+
+        <input class="primary" type="submit" value="Sign in">
+
+
+    </form>
+{% endblock %}
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

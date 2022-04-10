@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}BETA shop{% endblock %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+    {% block stylesheets %}
+        <noscript><link rel="stylesheet" href="{{ (asset('assets/css/noscript.css')) }}"/></noscript>
+        <link rel="stylesheet" href="{{ asset("assets/css/main.css") }}" type="text/css"/>
+    {% endblock %}
+</head>
+<body class="left-sidebar is-preload">
+<div id="page-wrapper">
+    {% include'layout/header.html.twig' %}
+    {% block content %}{% endblock content %}
+
+    {% include'layout/footer.html.twig' %}
+
+    {#{% include'layout/icons.html.twig' %}#}
+
+    {% block javascripts %}
+        <script src= "{{ asset("assets/js/jquery.min.js") }}"></script>
+        <script src= "{{ asset("assets/js/jquery.dropotron.min.js") }}"></script>
+        <script src= "{{ asset("assets/js/jquery.scrolly.min.js") }}"></script>
+        <script src= "{{ asset("assets/js/jquery.scrollex.min.js") }}"></script>
+        <script src= "{{ asset("assets/js/breakpoints.min.js") }}"></script>
+        <script src= "{{ asset("assets/js/util.js") }}"></script>
+        <script src= "{{ asset("assets/js/main.js") }}"></script>
+        <script src= "{{ asset("assets/js/browser.min.js") }}"></script>
+
+    {% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+
+{% extends 'default/baseProduct.html.twig' %}
+{% block title %}{{ category.name }}{% endblock %}
+{% block content%}
+
+    {#      <h1>{{category.name}}</h1>#}
+    {#      <section>#}
+    {#          {% for item in categories %}#}
+    {#              {% if item.parent == category.name %}#}
+    {#                  {% if item.image == NULL %}#}
+    {#                      <img src="{{ asset('images/pic01.jpg') }}">#}
+    {#                  {% else %}#}
+    {#                      <img src="{{ sonata_path(item.image,'big') }}" alt="">#}
+    {#                  {% endif %}#}
+    {#                  <li><a href="{{item.name}}" class="list-group-item list-group-item-action">#}
+    {#                          {{item.name}}</a></li>#}
+
+    {#              {% endif %}#}
+
+    {#          {% endfor %}#}
+    {#      </section>#}
+    {#      <div class="list-group">#}
+    {#          {% for product in products %}#}
+    {#              {% if product.parent == category.name %}#}
+    {#                  <img src="{{ sonata_path(product.image, 'big') }}" alt="">#}
+    {#                  <li><a href="{{ path('product',{id: product.id})}}" class="list-group-item list-group-item-action">{{ product.name }}</a></li>#}
+    {#              {% endif %}#}
+    {#          {% endfor %}#}
+    {#      </div>#}
+    <div class="wrapper style1">
+        <div class="container">
+            <div class="row gtr-200">
+                <div class="col-4 col-12-mobile" id="sidebar">
+                    <section>
+                        <div class="row gtr-50">
+                            <div class="col-8">
+                                {% for item in categories %}
+                                    {% if item.parent == category.name %}
+                                        <article>
+                                            <li><a href="{{ path('category',{name:item.name}) }}">{{ item.name }}</a> </li>
+                                        </article>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-8 col-12-mobile imp-mobile" id="content">
+                    <article id="main">
+                        <section class="vertical">
+
+                            {% for item in categories %}
+                                {% if item.parent == category.name %}
+                                    <article>
+                                        {% if item.image == NULL %}
+                                            <img src="{{ asset('images/pic01.jpg') }}" alt="">
+                                            <li><a href="{{ path('category',{name:item.name}) }}">{{ item.name }}</a> </li>
+                                        {% else %}
+                                        <img src="{{ sonata_path(item.image, 'small') }}" alt="">
+                                        <li><a href="{{ path('category',{name:item.name}) }}">{{ item.name }}</a> </li>
+                                        {% endif %}
+                                    </article>
+                                {% endif %}
+                            {% endfor %}
+                        </section>
+                    </article>
+                </div>
+
+            </div>
+            <section id="features" class="container special">
+            <div class="row">
+                        {% for product in products %}
+                            {% if product.parent == category.name %}
+                                <article class="col-4 col-12-mobile special">
+                                        <a href="{{ path('product',{id:product.id}) }}" class="image featured"><img src="{{ sonata_path(product.image,'small') }}" alt="" /></a>
+                                    <header>
+                                        <h3><a href="{{ path('product',{id:product.id}) }}">{{ product.name }}</a></h3>
+                                    </header>
+{#                                    <p>{{ product.description }}</p>#}
+                                    <input type="button" value="Добавить в корзину">
+                                </article>
+                            {% endif %}
+                        {% endfor %}
+            </div>
+            </section>
+        </div>
+    </div>
+    </div>
+
+
+
+{% endblock %}

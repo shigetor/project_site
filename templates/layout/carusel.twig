@@ -1,0 +1,13 @@
+<section class="carousel">
+	<div class="reel">
+		<header><h3>Популярные категории</h3></header>
+		{% for category in categories %}
+		<article>
+			<a href="{{ path('category',{name:category.name}) }}" class="image featured"><img src="{{ sonata_path(category.image,'small') }}" alt="" /></a>
+			<header>
+				<h3><a href="{{ path('category', {name:category.name}) }}">{{ category.name }}</a></h3>
+			</header>
+		</article>
+		{% endfor %}
+	</div>
+</section>

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{#{%block content%}#}
+
+{#    {% if app.user %}#}
+{#        <div >#}
+{#            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>#}
+{#        </div>#}
+{#    {% endif %}#}
+
+{% block content %}
+
+        {% include 'layout/carusel.twig' %}
+{#        {% include 'layout/main_first.html.twig' %}#}
+
+        {#    {% include'layout/cart.html.twig' %}#}
+
+        {#    {% include'layout/main_first.html.twig' %}#}
+
+        {#    {% include'layout/carusel.twig' %}#}
+
+        {#    {% include'layout/main_third.html.twig' %}#}
+
+
+        {#    {% include'layout/login.html.twig' %}#}
+
+
+{% endblock content %}
+

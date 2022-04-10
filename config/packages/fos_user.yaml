@@ -1,0 +1,20 @@
+# config/packages/fos_user.yaml
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: App\Entity\SonataUserUser
+    group:
+        group_class: App\Entity\SonataUserGroup
+        group_manager: sonata.user.orm.group_manager
+    service:
+        user_manager: sonata.user.orm.user_manager
+    from_email:
+        address: "sash.koirev.ru@gmail.com"
+        sender_name: "sash.koirev.ru@gmail.com"
+    profile:
+            # Authentication Form
+            form:
+                type:               fos_user_profile
+                name:               fos_user_profile_form
+                validation_groups:  [Authentication] # Please note : this is not the default value

@@ -1,0 +1,44 @@
+<nav id="nav">
+    <ul>
+        <li><a href="{{ path('index') }}" >Главная</a></li>
+        <li><a href="#">Каталог</a>
+            <ul>
+                {% for item in categories %}
+                    {% if item.parent== NULL %}
+                        <li><a href="{{ path('category',{name:item.name})}}" >{{ item.name }}</a>
+                            <ul>
+                                {% for parentItem in categories %}
+                                    {% if parentItem.parent == item.name %}
+                                        <li><a href="{{path('category',{name:parentItem.name})}}" class="list-group-item list-group-item-action">
+                                                {{parentItem.name}}</a></li>
+                                    {% endif %}
+
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+
+        {% for item in categories %}
+            {% if item.parent== NULL %}
+                <li><a href="{{ path('category',{name:item.name})}}" >{{ item.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if app.user %}
+        <li><a href="{{ path('app_login') }}">{{ app.user }}</a>
+            <ul>
+                <li><a href="{{ path('app_logout') }}">Выход</a> </li>
+            </ul>
+        </li>
+        {% else %}
+            <li><a href="{{ path('app_login') }}">Войти</a>
+                <ul>
+                    <li><a href="{{ path('app_login') }}">Логин</a> </li>
+                    <li><a href="{{ path('registration') }}">Регистрация</a> </li>
+                </ul>
+            </li>
+        {% endif %}
+    </ul>
+</nav>

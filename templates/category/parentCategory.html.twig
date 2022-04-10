@@ -1,0 +1,5 @@
+{% for item in category %}
+    {% if item.id == category.id %}
+        <li>{{ item.name }}</li>
+    {% endif %}
+{% endfor %}
