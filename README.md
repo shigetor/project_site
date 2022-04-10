@@ -1,5 +1,9 @@
 # Проект Интернет-магазина
-##  _Документация по установке:_
+##  _Документация по установке
+* Использумый стэк ### php-js-html-css-mysql
+
+## Php 7.4, mysql 8.0 
+
 * ###  Склонировать репозиторий себе в папку
  > $ git clone git@github.com:shigetor/beta.git
 
@@ -39,20 +43,6 @@
 
 > $ npm run build
 
-* ### Создание  шаблонов Главная страница, карточка Товара, страница  Авторизации
-  ### Скачали готовый пакет с сайта HTML5up.net , папку assets с главными файлами main.css и main.js разместили в папке проектa public.
- ### На основании файла из готового пакета  index.html Через Visual Studio Code  создали  файлы : 
-> default/index.html.twig -Главная страница,  
-> product/product.html.twig -cтраница Товара,
- ### Верстку шаблонов разбили на основные компоненты, которые помещены в папке templates/layout : (12 компонентов). Подключение компонентов в файлах с помощью комманды  include.
-### Подключение шаблонов :
-## homepage: 
->  path: /
- > controller: App\Controller\DefaultController::index
-
-## product:
-  >path: /product/{id}
-  >controller: App\Controller\DefaultController::productShow
 ## Логин и регистрация пользователей
 > /login
 
